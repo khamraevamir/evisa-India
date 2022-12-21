@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<div class=" container py-5 px-3">
+    <form class="columns" action="{% url 'questions' %}" method="POST" enctype="multipart/form-data" >
+    {% csrf_token %}
+
+        <div class="column is-half mx-auto">
+            {% for question in questions %}
+            <div class="field my-4">
+                <label class="label">{{forloop.counter}}. {{question.title}}</label>
+                <div class="control">
+                    {% if question.types == 'is_select' %}
+
+                    <div class="select">
+                        <select name="{{question.name}}">
+                            <option>Среднее оброзование</option>
+                            <option>Высшее оброзование</option>
+                            <option>Не закончил школу</option>
+                        </select>
+                    </div>
+                    {% elif question.types == 'is_radio' %}
+                    <div class="control">
+                        {% for subquestion in question.subquestions.all %}
+                            {% if subquestion.answer is not None %}
+                            <label class="radio rad">
+                                <input required name="{{subquestion.name}}" value="{{subquestion.answer}}" type="radio" class="
+
+                                {% if subquestion.is_radio_activate %}deactivate_hidden
+                                {% else %} activate_hidden
+                                {% endif %}"
+
+                                       >
+                                {{ subquestion.answer }}
+                            </label>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="hidden_field ">
+                        {% if question.subquestions.all %}
+                            {% for subquestion in question.subquestions.all %}
+                                {% if subquestion.answer is None %}
+                                <div class="field my-4">
+                                    <label class="label">{{subquestion.title}}</label>
+                                    <div class="control">
+                                        {% if subquestion.types == 'is_date' %}
+                                            <input name="{{subquestion.name}}" value="" class="input" type="date" placeholder="">
+                                        {% else %}
+                                            <input name="{{subquestion.name}}" value="" class="input" type="text" placeholder="">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    {% else %}
+                    <input required class="input" name="{{question.name}}" type="text" placeholder="{% if question.placeholder %} {{question.placeholder}} {% endif %}">
+                    {% endif %}
+
+                </div>
+
+            </div>
+            {% endfor %}
+            <div>
+                <label class="file-label has-text-weight-bold mb-2 mt-6">Фото паспорта:</label>
+                <div id="file-js-example" class="file has-name is-fullwidth" >
+                  <label class="file-label">
+                    <input required class="file-input" type="file" name="passport_image">
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        Выберите фото
+                      </span>
+                    </span>
+                    <span class="file-name">
+                      No file uploaded
+                    </span>
+                  </label>
+                </div>
+                <label class="file-label has-text-weight-bold mt-4 mb-2">Фото 2x2 с белым фоном:</label>
+                <div id="file-js-example2" class="file has-name is-fullwidth">
+                  <label class="file-label">
+                    <input required class="file-input" type="file" name="image">
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        Выберите фото
+                      </span>
+                    </span>
+                    <span class="file-name">
+                      No file uploaded
+                    </span>
+                  </label>
+                </div>
+            </div>
+            <button class="button is-medium is-fullwidth mt-4 is-info">
+                Отправить
+            </button>
+
+        </div>
+
+    </form>
+</div>
+
+<script>
+  const fileInput = document.querySelector('#file-js-example input[type=file]');
+  fileInput.onchange = () => {
+    if (fileInput.files.length > 0) {
+      const fileName = document.querySelector('#file-js-example .file-name');
+      fileName.textContent = fileInput.files[0].name;
+    }
+  }
+
+  const fileInput2 = document.querySelector('#file-js-example2 input[type=file]');
+  fileInput2.onchange = () => {
+    if (fileInput2.files.length > 0) {
+      const fileName2 = document.querySelector('#file-js-example2 .file-name');
+      fileName2.textContent = fileInput2.files[0].name;
+    }
+  }
+</script>
+
+{% endblock %}

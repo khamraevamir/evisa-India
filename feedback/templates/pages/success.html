@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    <div class=" ">
+        <div class="header container is-flex-direction-column is-flex is-align-items-center is-justify-content-center">
+            <img class="image " src="{% static 'images/success.png' %}" alt="">
+            <h2 class="title is-3 has-text-centered">Ваша заявка принята</h2>
+            <a class="is-size-6-mobile " href="{% url 'index' %}">Вернуться на гланую страницу</a>
+        </div>
+    </div>
+
+{% endblock %}

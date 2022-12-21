@@ -1,0 +1,32 @@
+.logo {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.header {
+    height: calc(100vh - 56px)
+}
+
+.navbar-item  img{
+    border-radius: 0.1rem !important;
+
+}
+
+.rad:first-child {
+    margin-right: 10px;
+}
+
+.rad:last-child {
+    margin-left: 0px;
+}
+
+
+.image {
+    height: 400px;
+}
+
+@media screen and (max-width:769px) {
+    .image {
+        height: 200px;
+    }
+}
