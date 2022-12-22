@@ -1,6 +1,6 @@
 from django.db import models
 
-
+#
 class Question(models.Model):
     TYPE_CHOICES = (
         ("is_text", "is_text"),
