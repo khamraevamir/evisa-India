@@ -18,7 +18,8 @@
             <div class="navbar-brand">
             <a class="navbar-item logo" href="{% url 'index' %}">
                 <img class="mr-3" src="{% static 'images/header.png' %}" alt="">
-                E-Visa
+                E-Visa                     <div class="ml-5" id="google_translate_element"></div>
+
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -31,7 +32,6 @@
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
 <!--                  <a class="navbar-item">-->
-<!--                    Главная-->
 <!--                  </a>-->
 
 <!--                  <a class="navbar-item">-->
@@ -76,9 +76,21 @@
           </div>
         </nav>
     </div>
+
+
     {% block content %}
 
     {% endblock %}
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'ru',
+          includedLanguages: 'uz',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

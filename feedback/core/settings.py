@@ -6,9 +6,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-$n3p2wz&o$vg@5rab6&e9d2z_8r&$8!1k=#$#qf2t8^hl1@g%%'
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['evisa.pythonanywhere.com', 'http://127.0.0.1:8000']
+ALLOWED_HOSTS = ['evisa.pythonanywhere.com', '127.0.0.1']
 
 
 INSTALLED_APPS = [
