@@ -101,6 +101,7 @@ class Questionnaire(models.Model):
     is_criminal = models.BooleanField('Судимость(было/не было)', default=False)
     passport_image = models.ImageField('Фото паспорта:', upload_to='passport_images/', null=True, blank=True)
     image = models.ImageField('Фото:', upload_to='images/', null=True, blank=True)
+    date = models.DateTimeField('Дата регистрации: ', auto_now_add=True, null=True)
 
     class Meta:
         verbose_name = 'Анкета'

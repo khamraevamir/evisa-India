@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-$n3p2wz&o$vg@5rab6&e9d2z_8r&$8!1k=#$#qf2t8^hl1@g%%'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['evisa.pythonanywhere.com', '127.0.0.1']
 
@@ -101,3 +101,9 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+
+DATE_FORMAT = ( ( 'd-m-Y' ))
+DATE_INPUT_FORMATS = ( ('%d-%m-%Y'),)
+DATETIME_FORMAT = (( 'd-m-Y H:i' ))
+DATETIME_INPUT_FORMATS = (('%d-%m-%Y %H:%i'),)
