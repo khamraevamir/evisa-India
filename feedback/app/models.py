@@ -99,9 +99,12 @@ class Questionnaire(models.Model):
     visited_countries_saarca = models.TextField('Визиты в SARCA ')
     is_deported = models.BooleanField('Депорт(было/не было)', default=False)
     is_criminal = models.BooleanField('Судимость(было/не было)', default=False)
-    passport_image = models.ImageField('Фото паспорта:', upload_to='passport_images/', null=True)
-    image = models.ImageField('Фото:', upload_to='images/', null=True)
+    passport_image = models.ImageField('Фото паспорта:', upload_to='passport_images/', null=True, blank=True)
+    image = models.ImageField('Фото:', upload_to='images/', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Анкета'
         verbose_name_plural = 'Анкеты'
+
+    def __str__(self):
+        return  f'{self.first_name} {self.last_name}'
