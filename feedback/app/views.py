@@ -62,15 +62,15 @@ def questions(request):
         questionnaire.visited_countries_saarca = request.POST.get('visited_countries_saarca')
         questionnaire.is_deported = True if request.POST.get('is_deported') == 'Да' else False
         questionnaire.is_criminal = True if request.POST.get('is_criminal') == 'Да' else False
-        image = request.FILES['image']
-        fs1 = FileSystemStorage()
-        filename1 = fs1.save(image.name, image)
-        questionnaire.image = filename1
+        # image = request.FILES['image']
+        # fs1 = FileSystemStorage()
+        # filename1 = fs1.save(image.name, image)
+        # questionnaire.image = filename1
 
-        passport_image = request.FILES['passport_image']
-        fs2 = FileSystemStorage()
-        filename2 = fs2.save(passport_image.name, passport_image)
-        questionnaire.passport_image = filename2
+        # passport_image = request.FILES['passport_image']
+        # fs2 = FileSystemStorage()
+        # filename2 = fs2.save(passport_image.name, passport_image)
+        # questionnaire.passport_image = filename2
 
         questionnaire.save()
         return render(request, 'pages/success.html')
